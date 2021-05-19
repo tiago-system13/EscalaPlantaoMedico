@@ -11,13 +11,13 @@ using System.Linq.Expressions;
 
 namespace EscalaPlantaoMedico.Data.Base
 {
-    public class BaseRepositorio<T> : IBaseRepositorio<T> where T : BaseEntidade
+    public class BaseRepositorio<T> : DisposableObject, IBaseRepositorio<T> where T : BaseEntidade
     {
-        protected readonly EscalaContexto _context;
+        protected  EscalaContexto _context;
 
         private readonly DbSet<T> dataset;
         
-        public BaseRepositorio(EscalaContexto contexto)
+        public BaseRepositorio(EscalaContexto contexto): base(new IDisposable[] { contexto })
         {
             _context = contexto ?? throw new ArgumentException(nameof(contexto));
             dataset = _context.Set<T>();

@@ -1,6 +1,6 @@
 ﻿using EscalaPlantaoMedico.Core.Enum;
 
-namespace EscalaPlantaoMedico.Data
+namespace EscalaPlantaoMedico.Core.Repositorio
 {
     public class DataOperation
     {
